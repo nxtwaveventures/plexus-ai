@@ -5,7 +5,8 @@ const nextConfig = {
         unoptimized: true,
         domains: ['plexusai.in'],
     },
-    basePath: process.env.NODE_ENV === 'production' ? '/plexus-ai' : '',
+    basePath: '',
+    trailingSlash: true,
 };
 
 module.exports = nextConfig; 
