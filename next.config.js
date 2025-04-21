@@ -7,6 +7,9 @@ const nextConfig = {
     },
     basePath: '',
     trailingSlash: true,
+    // Remove headers and rewrites since they're not needed for static export
+    // Ensure asset prefix starts with a slash for proper font loading
+    assetPrefix: '/',
 };
 
 module.exports = nextConfig; 

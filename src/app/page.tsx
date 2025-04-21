@@ -7,6 +7,9 @@ import Navigation from '@/components/Navigation';
 import ProblemSlide from '@/components/ProblemSlide';
 import SolutionSlide from '@/components/SolutionSlide';
 import MarketSlide from '@/components/MarketSlide';
+import Store from '@/components/Store';
+import Email from '@/components/Email';
+import Header from '@/components/Header';
 
 export default function Home() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -147,28 +150,60 @@ export default function Home() {
         {
             id: 'market',
             content: <MarketSlide />
+        },
+        {
+            id: 'store',
+            content: <Store />
+        },
+        {
+            id: 'contact',
+            content: <Email />
         }
     ];
 
     return (
-        <main className="relative">
-            {slides[currentSlide].content}
-            <Navigation
-                currentSlide={currentSlide}
-                totalSlides={slides.length}
-                onNext={nextSlide}
-                onPrevious={previousSlide}
-            />
-            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-50">
-                {slides.map((_, index) => (
+        <main className="min-h-screen bg-background">
+            <Header />
+            <Navigation />
+
+            <section id="home" className="min-h-screen flex items-center justify-center relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
+                <div className="absolute inset-0 bg-grid-white/[0.02]" />
+                <div className="relative z-10 text-center px-4">
+                    <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                        Welcome to Plexus AI
+                    </h1>
+                    <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-8">
+                        Revolutionizing healthcare and finance with AI-powered solutions
+                    </p>
                     <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`w-3 h-3 rounded-full transition-all ${currentSlide === index ? 'bg-accent w-6' : 'bg-white/30 hover:bg-white/50'
-                            }`}
-                    />
-                ))}
-            </div>
+                        onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                        Learn More
+                    </button>
+                </div>
+            </section>
+
+            <section id="problem" className="min-h-screen">
+                <ProblemSlide />
+            </section>
+
+            <section id="solution" className="min-h-screen">
+                <SolutionSlide />
+            </section>
+
+            <section id="market" className="min-h-screen">
+                <MarketSlide />
+            </section>
+
+            <section id="store" className="min-h-screen">
+                <Store />
+            </section>
+
+            <section id="contact" className="min-h-screen">
+                <Email />
+            </section>
         </main>
     );
 } 
