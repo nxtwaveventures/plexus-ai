@@ -1,52 +1,68 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+"use client";
+
+import { useRef, useEffect, ReactNode } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 
 interface ScrollRevealProps {
-    children: React.ReactNode;
-    direction?: 'up' | 'down' | 'left' | 'right';
+    children: ReactNode;
+    width?: "full" | "auto";
     delay?: number;
+    direction?: "up" | "down" | "left" | "right" | "none";
+    duration?: number;
+    once?: boolean;
     className?: string;
 }
 
-type Direction = NonNullable<ScrollRevealProps['direction']>;
-type Offset = { x?: number; y?: number };
-
 export default function ScrollReveal({
     children,
-    direction = 'up',
+    width = "full",
     delay = 0,
-    className = ''
+    direction = "up",
+    duration = 0.5,
+    once = true,
+    className = "",
 }: ScrollRevealProps) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once });
+    const controls = useAnimation();
 
-    const directionOffset: Record<Direction, Offset> = {
-        up: { y: 50 },
-        down: { y: -50 },
-        left: { x: 50 },
-        right: { x: -50 }
+    const getDirection = () => {
+        switch (direction) {
+            case "up":
+                return { y: 30 };
+            case "down":
+                return { y: -30 };
+            case "left":
+                return { x: 30 };
+            case "right":
+                return { x: -30 };
+            case "none":
+                return {};
+            default:
+                return { y: 30 };
+        }
     };
 
-    const offset = directionOffset[direction];
+    useEffect(() => {
+        if (isInView) {
+            controls.start({
+                opacity: 1,
+                ...getDirection(),
+                transition: {
+                    duration,
+                    delay,
+                    ease: [0.25, 0.1, 0.25, 1],
+                },
+            });
+        }
+    }, [isInView, controls, delay, duration, direction]);
 
     return (
         <motion.div
             ref={ref}
-            initial={{
-                opacity: 0,
-                ...offset
-            }}
-            animate={{
-                opacity: isInView ? 1 : 0,
-                x: isInView ? 0 : offset.x ?? 0,
-                y: isInView ? 0 : offset.y ?? 0
-            }}
-            transition={{
-                duration: 0.8,
-                delay: delay,
-                ease: "easeOut"
-            }}
-            className={className}
+            initial={{ opacity: 0, ...getDirection() }}
+            animate={controls}
+            className={`${width === "full" ? "w-full" : ""} ${className}`}
         >
             {children}
         </motion.div>
