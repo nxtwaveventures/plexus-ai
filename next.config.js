@@ -4,8 +4,8 @@ const nextConfig = {
     images: {
         unoptimized: true,
     },
-    basePath: process.env.NODE_ENV === 'production' ? '/plexus-ai' : '',
-    assetPrefix: process.env.NODE_ENV === 'production' ? '/plexus-ai' : '',
+    basePath: '',
+    assetPrefix: '',
 };
 
 module.exports = nextConfig; 
