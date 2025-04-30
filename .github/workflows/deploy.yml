@@ -27,18 +27,26 @@ jobs:
           npm ci
           # Fix globals.css by removing problematic text
           sed -i 's/} they.*foreign/}/' src/app/globals.css
-          # Verify the fix worked
-          grep -A 3 radius src/app/globals.css
+          # Show that the CSS fix worked
+          cat src/app/globals.css | grep -A 3 "radius"
+          # Show the next.config.js file
+          cat next.config.js
           # Build with proper configuration
-          npm run build
+          NEXT_PUBLIC_BASE_PATH="" npm run build
           # Ensure .nojekyll file exists
           touch out/.nojekyll
-          # Ensure CNAME is correct
+          # Create CNAME file
           echo "plexusai.in" > out/CNAME
+          # List files in the out directory
+          ls -la out/
+          # Verify BAA directory exists
+          ls -la out/plexus-lifex/ || echo "plexus-lifex directory missing"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: out
           branch: gh-pages
-          clean: true 
+          clean: true
+          clean-exclude: |
+            CNAME 
