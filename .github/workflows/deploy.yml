@@ -22,25 +22,40 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install and Build 🔧
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fix CSS Error
         run: |
-          npm ci
+          # Backup the file first
+          cp src/app/globals.css src/app/globals.css.bak
           # Fix globals.css by removing problematic text
           sed -i 's/} they.*foreign/}/' src/app/globals.css
-          # Show that the CSS fix worked
-          cat src/app/globals.css | grep -A 3 "radius"
-          # Show the next.config.js file
+          echo "CSS File After Fix:"
+          cat src/app/globals.css | grep -A 3 -B 2 "radius"
+
+      - name: Verify Configuration
+        run: |
+          echo "Next.js Config:"
           cat next.config.js
-          # Build with proper configuration
-          NEXT_PUBLIC_BASE_PATH="" npm run build
+
+      - name: Build
+        run: |
+          npm run build
+          
+      - name: Prepare for deployment
+        run: |
           # Ensure .nojekyll file exists
           touch out/.nojekyll
           # Create CNAME file
           echo "plexusai.in" > out/CNAME
-          # List files in the out directory
+          # List output directories
+          echo "Output directory structure:"
           ls -la out/
-          # Verify BAA directory exists
+          echo "LifeX directory:"
           ls -la out/plexus-lifex/ || echo "plexus-lifex directory missing"
+          echo "BAA directory:"
+          ls -la out/plexus-lifex/baa/ || echo "BAA directory missing"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
