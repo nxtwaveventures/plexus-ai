@@ -10,6 +10,9 @@ const nextConfig = {
     assetPrefix: process.env.NODE_ENV === 'production' ? 'https://plexusai.in' : '',
     // Configure base path
     basePath: '',
+    experimental: {
+        typedRoutes: true
+    }
 };
 
 module.exports = nextConfig; 
