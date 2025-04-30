@@ -20,17 +20,25 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Install and Build 🔧
         run: |
           npm ci
           # Fix globals.css by removing problematic text
           sed -i 's/} they.*foreign/}/' src/app/globals.css
+          # Verify the fix worked
+          grep -A 3 radius src/app/globals.css
+          # Build with proper configuration
           npm run build
+          # Ensure .nojekyll file exists
           touch out/.nojekyll
+          # Ensure CNAME is correct
+          echo "plexusai.in" > out/CNAME
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: out
-          branch: gh-pages 
+          branch: gh-pages
+          clean: true 
