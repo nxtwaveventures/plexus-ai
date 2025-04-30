@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { HeartPulse, Wallet, Users, ArrowRight } from 'lucide-react';
+import { HeartPulse, Wallet, Users, ArrowRight, Brain } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 
@@ -96,6 +96,45 @@ export default function PlexusLifeX() {
                                 </div>
                             </ScrollReveal>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* BAA Section */}
+            <section className="py-20 relative bg-gradient-to-b from-background via-background/95 to-background">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-5xl mx-auto">
+                        <ScrollReveal>
+                            <div className="text-center mb-12">
+                                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+                                    Biological Age Assessment
+                                </h2>
+                                <p className="text-xl text-white/80 mb-8">
+                                    Discover your biological age through our advanced AI-powered assessment
+                                </p>
+                            </div>
+                        </ScrollReveal>
+
+                        <ScrollReveal delay={0.2}>
+                            <div className="card-glow p-8 rounded-lg text-center">
+                                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
+                                    <Brain className="w-8 h-8 text-primary" />
+                                </div>
+                                <h3 className="text-2xl font-semibold mb-4">
+                                    Take the Assessment
+                                </h3>
+                                <p className="text-white/70 mb-8">
+                                    Our comprehensive assessment analyzes various factors including lifestyle, health metrics, and biological markers to determine your body's true age.
+                                </p>
+                                <Link
+                                    href="/plexus-lifex/baa"
+                                    className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                                >
+                                    Start Assessment
+                                    <ArrowRight className="ml-2 w-5 h-5" />
+                                </Link>
+                            </div>
+                        </ScrollReveal>
                     </div>
                 </div>
             </section>

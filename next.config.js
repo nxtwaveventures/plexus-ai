@@ -10,12 +10,6 @@ const nextConfig = {
     assetPrefix: process.env.NODE_ENV === 'production' ? 'https://plexusai.in' : '',
     // Configure base path
     basePath: '',
-    // Disable image optimization since we're using unoptimized images
-    experimental: {
-        images: {
-            allowFutureImage: true,
-        },
-    },
 };
 
 module.exports = nextConfig; 
