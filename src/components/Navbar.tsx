@@ -31,6 +31,9 @@ const Navbar = () => {
                         <Link href="/#about" className="text-white/80 hover:text-white transition-colors">About CoE</Link>
                         <a href="/research" target="_blank" className="text-white/80 hover:text-white transition-colors">Research</a>
                         <a href="/plexus-lifex" target="_blank" className="text-white/80 hover:text-white transition-colors">Plexus LifeX</a>
+                        <a href="/plexus-lifex/baa" target="_blank" className="text-white/80 hover:text-white transition-colors">
+                            <span className="text-primary hover:text-primary/90">Biological Age Assessment</span>
+                        </a>
                         <a href="/innovation" target="_blank" className="text-white/80 hover:text-white transition-colors">Innovation</a>
                         <Link href="/#contact" className="glow-button ml-2">
                             Contact Us
@@ -61,6 +64,9 @@ const Navbar = () => {
                             <Link href="/#about" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>About CoE</Link>
                             <a href="/research" target="_blank" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Research</a>
                             <a href="/plexus-lifex" target="_blank" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Plexus LifeX</a>
+                            <a href="/plexus-lifex/baa" target="_blank" className="text-xl text-primary hover:text-primary/90 transition-colors" onClick={toggleMenu}>
+                                Biological Age Assessment
+                            </a>
                             <a href="/innovation" target="_blank" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Innovation</a>
                             <Link href="/#contact" className="glow-button mt-4" onClick={toggleMenu}>
                                 Contact Us
