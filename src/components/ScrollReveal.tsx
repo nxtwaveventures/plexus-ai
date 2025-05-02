@@ -19,7 +19,7 @@ export default function ScrollReveal({
     delay = 0,
     direction = "up",
     duration = 0.5,
-    once = true,
+    once = false,
     className = "",
 }: ScrollRevealProps) {
     const ref = useRef(null);
