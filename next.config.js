@@ -5,7 +5,7 @@ const nextConfig = {
         unoptimized: true
     },
     trailingSlash: true,
-    distDir: 'out',
+    distDir: '.next',
     experimental: {
         typedRoutes: true
     },
