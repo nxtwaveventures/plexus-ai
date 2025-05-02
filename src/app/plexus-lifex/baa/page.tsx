@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Activity, Heart, Brain, Dumbbell, AlertCircle, Moon, Coffee, Scale, Apple, Cigarette, Beer, Bed, Salad, Info, ChevronDown, ChevronUp, Calendar, TrendingUp, TrendingDown } from 'lucide-react';
 
+// Add this to ensure the page is generated
+export const dynamic = 'force-static';
+
 interface AssessmentQuestion {
     id: number;
     question: string;
