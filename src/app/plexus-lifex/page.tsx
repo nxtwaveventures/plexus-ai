@@ -1,6 +1,6 @@
 'use client';
 
-import { HeartPulse, Wallet, Users, ArrowRight, Brain } from 'lucide-react';
+import { HeartPulse, Wallet, Users, ArrowRight, Brain, FileText, BookOpen, Lightbulb } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

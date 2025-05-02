@@ -63,17 +63,8 @@ jobs:
           </html>
           EOL
 
-      - name: Ensure BAA directory exists
-        run: |
-          mkdir -p out/plexus-lifex/baa
-          if [ ! -f out/plexus-lifex/baa/index.html ]; then
-            cp out/plexus-lifex/baa/index.txt out/plexus-lifex/baa/index.html
-          fi
-
       - name: Verify build output
-        run: |
-          ls -la out/
-          ls -la out/plexus-lifex/baa/
+        run: ls -la out/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
