@@ -29,12 +29,12 @@ const Navbar = () => {
 
                     <div className="hidden md:flex items-center space-x-8">
                         <Link href="/#about" className="text-white/80 hover:text-white transition-colors">About CoE</Link>
-                        <a href="/research" target="_blank" className="text-white/80 hover:text-white transition-colors">Research</a>
-                        <a href="/plexus-lifex" target="_blank" className="text-white/80 hover:text-white transition-colors">Plexus LifeX</a>
-                        <a href="/plexus-lifex/baa" target="_blank" className="text-white/80 hover:text-white transition-colors">
+                        <Link href="/research" className="text-white/80 hover:text-white transition-colors">Research</Link>
+                        <Link href="/plexus-lifex" className="text-white/80 hover:text-white transition-colors">Plexus LifeX</Link>
+                        <Link href="/plexus-lifex/baa" className="text-white/80 hover:text-white transition-colors">
                             <span className="text-primary hover:text-primary/90">Biological Age Assessment</span>
-                        </a>
-                        <a href="/innovation" target="_blank" className="text-white/80 hover:text-white transition-colors">Innovation</a>
+                        </Link>
+                        <Link href="/innovation" className="text-white/80 hover:text-white transition-colors">Innovation</Link>
                         <Link href="/#contact" className="glow-button ml-2">
                             Contact Us
                         </Link>
@@ -62,12 +62,12 @@ const Navbar = () => {
                         </div>
                         <div className="flex flex-col items-center justify-center h-full space-y-8 -mt-16">
                             <Link href="/#about" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>About CoE</Link>
-                            <a href="/research" target="_blank" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Research</a>
-                            <a href="/plexus-lifex" target="_blank" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Plexus LifeX</a>
-                            <a href="/plexus-lifex/baa" target="_blank" className="text-xl text-primary hover:text-primary/90 transition-colors" onClick={toggleMenu}>
+                            <Link href="/research" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Research</Link>
+                            <Link href="/plexus-lifex" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Plexus LifeX</Link>
+                            <Link href="/plexus-lifex/baa" className="text-xl text-primary hover:text-primary/90 transition-colors" onClick={toggleMenu}>
                                 Biological Age Assessment
-                            </a>
-                            <a href="/innovation" target="_blank" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Innovation</a>
+                            </Link>
+                            <Link href="/innovation" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Innovation</Link>
                             <Link href="/#contact" className="glow-button mt-4" onClick={toggleMenu}>
                                 Contact Us
                             </Link>

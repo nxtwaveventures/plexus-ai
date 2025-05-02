@@ -31,8 +31,11 @@ jobs:
           # Create necessary files for GitHub Pages
           touch out/.nojekyll
           echo "plexusai.in" > out/CNAME
-          # Create a copy of plexus-lifex/index.html as index.html in root
+          # Ensure directories exist
+          mkdir -p out/plexus-lifex/baa
+          # Copy index files
           cp out/plexus-lifex/index.html out/index.html
+          cp out/plexus-lifex/baa/index.html out/plexus-lifex/baa/index.html || echo "BAA index.html not found"
           # Ensure all files have proper permissions
           chmod -R 755 out/
 
@@ -46,6 +49,8 @@ jobs:
           ls -la out/plexus-lifex/baa/ || echo "BAA directory missing"
           echo "Root index.html exists:"
           test -f out/index.html && echo "Yes" || echo "No"
+          echo "BAA index.html exists:"
+          test -f out/plexus-lifex/baa/index.html && echo "Yes" || echo "No"
           echo "CNAME file contents:"
           cat out/CNAME
 
