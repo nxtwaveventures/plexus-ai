@@ -31,11 +31,11 @@ jobs:
           # Create necessary files for GitHub Pages
           touch out/.nojekyll
           echo "plexusai.in" > out/CNAME
-          # Ensure directories exist
+          # Create directories if they don't exist
+          mkdir -p out/plexus-lifex
           mkdir -p out/plexus-lifex/baa
-          # Copy index files
-          cp out/plexus-lifex/index.html out/index.html
-          cp out/plexus-lifex/baa/index.html out/plexus-lifex/baa/index.html || echo "BAA index.html not found"
+          # Copy files
+          cp -r out/* out/
           # Ensure all files have proper permissions
           chmod -R 755 out/
 

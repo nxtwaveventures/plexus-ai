@@ -7,13 +7,12 @@ const nextConfig = {
     // Ensure trailing slash for consistent asset loading
     trailingSlash: true,
     // Configure asset loading for production
-    assetPrefix: process.env.NODE_ENV === 'production' ? 'https://plexusai.in' : '',
+    assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
     // Configure base path
     basePath: '',
+    // Disable server components for static export
     experimental: {
-        typedRoutes: true,
-        // Enable scroll restoration
-        scrollRestoration: true
+        typedRoutes: true
     },
     // Optimize static assets
     webpack: (config, { dev, isServer }) => {
@@ -26,26 +25,6 @@ const nextConfig = {
                 test: /\.css$/,
                 chunks: 'all',
                 enforce: true,
-            };
-            // Optimize static assets
-            config.optimization.moduleIds = 'deterministic';
-            config.optimization.runtimeChunk = 'single';
-            config.optimization.splitChunks = {
-                chunks: 'all',
-                maxInitialRequests: Infinity,
-                minSize: 0,
-                cacheGroups: {
-                    vendor: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name(module) {
-                            // Get the package name
-                            const match = module.context?.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/);
-                            if (!match) return 'vendor';
-                            const packageName = match[1];
-                            return `npm.${packageName.replace('@', '')}`;
-                        },
-                    },
-                },
             };
         }
         return config;
