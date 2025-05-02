@@ -28,6 +28,14 @@ const nextConfig = {
         }
         return config;
     },
+    // Ensure proper static file generation
+    generateStaticParams: async () => {
+        return {
+            '/': { page: '/' },
+            '/plexus-lifex': { page: '/plexus-lifex' },
+            '/plexus-lifex/baa': { page: '/plexus-lifex/baa' }
+        };
+    }
 };
 
 module.exports = nextConfig; 
