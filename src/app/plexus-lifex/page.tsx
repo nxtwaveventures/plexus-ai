@@ -3,8 +3,11 @@
 import { HeartPulse, Wallet, Users, ArrowRight, Brain } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function PlexusLifeX() {
+    const pathname = usePathname();
+
     return (
         <main className="min-h-screen bg-background">
             {/* Hero Section */}

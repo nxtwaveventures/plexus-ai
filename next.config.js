@@ -6,6 +6,8 @@ const nextConfig = {
     },
     trailingSlash: true,
     distDir: 'out',
+    basePath: '',
+    assetPrefix: '',
     experimental: {
         typedRoutes: true
     }

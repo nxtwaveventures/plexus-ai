@@ -1,11 +1,11 @@
+export async function generateStaticParams() {
+    return [];
+}
+
 export default function BAALayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    return (
-        <div className="min-h-screen bg-background">
-            {children}
-        </div>
-    );
+    return children;
 } 
