@@ -10,15 +10,6 @@ const nextConfig = {
     assetPrefix: '',
     experimental: {
         typedRoutes: true
-    },
-    // Add rewrites for static paths
-    async rewrites() {
-        return [
-            {
-                source: '/plexus-lifex/baa',
-                destination: '/plexus-lifex/baa/index.html'
-            }
-        ];
     }
 };
 

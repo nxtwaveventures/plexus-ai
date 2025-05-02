@@ -5,10 +5,6 @@ export const metadata: Metadata = {
     description: 'Take our comprehensive biological age assessment to understand your body\'s true age.',
 };
 
-export async function generateStaticParams() {
-    return [];
-}
-
 export default function BAALayout({
     children,
 }: {

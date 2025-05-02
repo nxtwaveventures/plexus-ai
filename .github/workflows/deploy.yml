@@ -34,10 +34,10 @@ jobs:
           echo "plexusai.in" > out/CNAME
           # Ensure all files have proper permissions
           chmod -R 755 out/
-          # Create index.html in plexus-lifex/baa directory if it doesn't exist
+          # Ensure BAA directory exists and has index.html
           mkdir -p out/plexus-lifex/baa
           if [ ! -f out/plexus-lifex/baa/index.html ]; then
-            cp out/plexus-lifex/baa/index.txt out/plexus-lifex/baa/index.html
+            echo "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0;url=/plexus-lifex/baa/'></head></html>" > out/plexus-lifex/baa/index.html
           fi
 
       - name: Verify Build Output 🔍
