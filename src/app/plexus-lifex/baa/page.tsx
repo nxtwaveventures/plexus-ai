@@ -6,6 +6,7 @@ import { ArrowRight, Activity, Heart, Brain, Dumbbell, AlertCircle, Moon, Coffee
 
 // Add this to ensure the page is generated
 export const dynamic = 'force-static';
+export const revalidate = false;
 
 interface AssessmentQuestion {
     id: number;
