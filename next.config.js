@@ -6,10 +6,10 @@ const nextConfig = {
     },
     // Ensure trailing slash for consistent asset loading
     trailingSlash: true,
-    // Configure asset loading for production
-    assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
     // Configure base path
     basePath: '',
+    // Configure static export
+    distDir: 'out',
     // Disable server components for static export
     experimental: {
         typedRoutes: true
@@ -17,8 +17,6 @@ const nextConfig = {
     // Optimize static assets
     webpack: (config, { dev, isServer }) => {
         if (!dev && !isServer) {
-            config.output.filename = '[name].[contenthash].js';
-            config.output.chunkFilename = '[name].[contenthash].js';
             // Ensure CSS is properly extracted
             config.optimization.splitChunks.cacheGroups.styles = {
                 name: 'styles',

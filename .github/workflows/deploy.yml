@@ -20,38 +20,38 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
 
-      - name: Install and Build 🔧
+      - name: Install Dependencies 📦
+        run: npm ci
+
+      - name: Fix CSS 🎨
         run: |
-          npm ci
           # Fix globals.css by removing problematic text
           sed -i 's/} they.*foreign/}/' src/app/globals.css
+
+      - name: Build Project 🔧
+        run: |
           # Build the project
           npm run build
           # Create necessary files for GitHub Pages
           touch out/.nojekyll
           echo "plexusai.in" > out/CNAME
-          # Create directories if they don't exist
-          mkdir -p out/plexus-lifex
-          mkdir -p out/plexus-lifex/baa
-          # Copy files
-          cp -r out/* out/
           # Ensure all files have proper permissions
           chmod -R 755 out/
 
-      - name: Verify Build Output
+      - name: Verify Build Output 🔍
         run: |
           echo "Output directory structure:"
           ls -la out/
-          echo "LifeX directory:"
+          echo "\nContents of out/plexus-lifex:"
           ls -la out/plexus-lifex/ || echo "plexus-lifex directory missing"
-          echo "BAA directory:"
+          echo "\nContents of out/plexus-lifex/baa:"
           ls -la out/plexus-lifex/baa/ || echo "BAA directory missing"
-          echo "Root index.html exists:"
-          test -f out/index.html && echo "Yes" || echo "No"
-          echo "BAA index.html exists:"
-          test -f out/plexus-lifex/baa/index.html && echo "Yes" || echo "No"
-          echo "CNAME file contents:"
+          echo "\nChecking critical files:"
+          echo "Root index.html:" $(test -f out/index.html && echo "✓ exists" || echo "✗ missing")
+          echo "BAA index.html:" $(test -f out/plexus-lifex/baa/index.html && echo "✓ exists" || echo "✗ missing")
+          echo "\nCNAME contents:"
           cat out/CNAME
 
       - name: Deploy 🚀
