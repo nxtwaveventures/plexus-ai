@@ -10,35 +10,6 @@ export default function PlexusLifeX() {
 
     return (
         <main className="min-h-screen bg-background">
-            {/* Navigation Tabs */}
-            <div className="sticky top-16 z-40 w-full border-b border-white/10 bg-background/95 backdrop-blur">
-                <nav className="container mx-auto px-4">
-                    <div className="flex space-x-8 py-4">
-                        <Link
-                            href="/plexus-lifex"
-                            className={`text-sm font-medium transition-colors hover:text-white ${pathname === '/plexus-lifex' ? 'text-white border-b-2 border-primary' : 'text-white/60'
-                                }`}
-                        >
-                            Overview
-                        </Link>
-                        <Link
-                            href="./pitch-deck"
-                            className={`text-sm font-medium transition-colors hover:text-white ${pathname === '/plexus-lifex/pitch-deck' ? 'text-white border-b-2 border-primary' : 'text-white/60'
-                                }`}
-                        >
-                            Pitch Deck
-                        </Link>
-                        <Link
-                            href="./biological-age-assessment"
-                            className={`text-sm font-medium transition-colors hover:text-white ${pathname === '/plexus-lifex/biological-age-assessment' ? 'text-white border-b-2 border-primary' : 'text-white/60'
-                                }`}
-                        >
-                            Biological Age Assessment
-                        </Link>
-                    </div>
-                </nav>
-            </div>
-
             {/* Hero Section */}
             <section className="min-h-[60vh] flex flex-col justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background to-background/60 pointer-events-none"></div>
@@ -53,14 +24,23 @@ export default function PlexusLifeX() {
                             <p className="text-xl text-white/90 mb-8">
                                 Transforming Healthcare Access Through AI-Powered Financial Solutions
                             </p>
-                            <Link
-                                href="/pitch-deck"
-                                target="_blank"
-                                className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-                            >
-                                View Pitch Deck
-                                <ArrowRight className="ml-2 w-5 h-5" />
-                            </Link>
+                            <div className="flex gap-4 justify-center">
+                                <Link
+                                    href="/pitch-deck"
+                                    target="_blank"
+                                    className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                                >
+                                    View Pitch Deck
+                                    <ArrowRight className="ml-2 w-5 h-5" />
+                                </Link>
+                                <Link
+                                    href="/plexus-lifex/biological-age-assessment"
+                                    className="inline-flex items-center px-6 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors"
+                                >
+                                    Biological Age Assessment
+                                    <ArrowRight className="ml-2 w-5 h-5" />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
