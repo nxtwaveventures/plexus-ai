@@ -12,8 +12,6 @@ const nextConfig = {
     basePath: '',
     experimental: {
         typedRoutes: true,
-        // Enable CSS optimization
-        optimizeCss: true,
         // Enable scroll restoration
         scrollRestoration: true
     },
@@ -51,17 +49,6 @@ const nextConfig = {
             };
         }
         return config;
-    },
-    // Configure static generation
-    generateStaticParams: async () => {
-        return {
-            '/plexus-lifex': {},
-            '/plexus-lifex/baa': {},
-        };
-    },
-    // Ensure proper static file generation
-    generateBuildId: async () => {
-        return `build-${Date.now()}`;
     }
 };
 
