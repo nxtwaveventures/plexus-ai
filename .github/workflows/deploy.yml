@@ -2,67 +2,74 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node.js ⚙️
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install Dependencies 📦
+      - name: Install dependencies
         run: npm ci
 
-      - name: Build Project 🔧
+      - name: Build
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Create .nojekyll file
+        run: touch out/.nojekyll
+
+      - name: Create CNAME file
+        run: echo "plexusai.in" > out/CNAME
+
+      - name: Ensure proper permissions
+        run: chmod -R 755 out/
+
+      - name: Create 404.html
         run: |
-          # Build the project
-          npm run build
-          # Create necessary files for GitHub Pages
-          touch out/.nojekyll
-          echo "plexusai.in" > out/CNAME
-          # Ensure all files have proper permissions
-          chmod -R 755 out/
-          # Create a 404.html file that redirects to the main page
-          echo "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0;url=/'></head></html>" > out/404.html
-          # Ensure BAA directory exists and has index.html
+          cat > out/404.html << 'EOL'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>Page Not Found</title>
+            <script>
+              window.location.href = '/';
+            </script>
+          </head>
+          <body>
+            <p>Redirecting to home page...</p>
+          </body>
+          </html>
+          EOL
+
+      - name: Ensure BAA directory exists
+        run: |
           mkdir -p out/plexus-lifex/baa
           if [ ! -f out/plexus-lifex/baa/index.html ]; then
             cp out/plexus-lifex/baa/index.txt out/plexus-lifex/baa/index.html
           fi
 
-      - name: Verify Build Output 🔍
+      - name: Verify build output
         run: |
-          echo "Output directory structure:"
           ls -la out/
-          echo "\nContents of out/plexus-lifex:"
-          ls -la out/plexus-lifex/ || echo "plexus-lifex directory missing"
-          echo "\nContents of out/plexus-lifex/baa:"
-          ls -la out/plexus-lifex/baa/ || echo "BAA directory missing"
-          echo "\nChecking critical files:"
-          echo "Root index.html:" $(test -f out/index.html && echo "✓ exists" || echo "✗ missing")
-          echo "BAA index.html:" $(test -f out/plexus-lifex/baa/index.html && echo "✓ exists" || echo "✗ missing")
-          echo "404.html:" $(test -f out/404.html && echo "✓ exists" || echo "✗ missing")
-          echo "\nCNAME contents:"
-          cat out/CNAME
+          ls -la out/plexus-lifex/baa/
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          folder: out
-          branch: gh-pages
-          clean: true
-          clean-exclude: |
-            .nojekyll
-            CNAME 
+          path: out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2 

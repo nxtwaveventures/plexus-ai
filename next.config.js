@@ -6,11 +6,11 @@ const nextConfig = {
     },
     trailingSlash: true,
     distDir: 'out',
-    basePath: '',
-    assetPrefix: '',
     experimental: {
         typedRoutes: true
     },
+    basePath: '',
+    assetPrefix: '',
     exportPathMap: async function () {
         return {
             '/': { page: '/' },
