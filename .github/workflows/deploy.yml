@@ -25,11 +25,6 @@ jobs:
       - name: Install Dependencies 📦
         run: npm ci
 
-      - name: Fix CSS 🎨
-        run: |
-          # Fix globals.css by removing problematic text
-          sed -i 's/} they.*foreign/}/' src/app/globals.css
-
       - name: Build Project 🔧
         run: |
           # Build the project
@@ -39,6 +34,11 @@ jobs:
           echo "plexusai.in" > out/CNAME
           # Ensure all files have proper permissions
           chmod -R 755 out/
+          # Create index.html in plexus-lifex/baa directory if it doesn't exist
+          mkdir -p out/plexus-lifex/baa
+          if [ ! -f out/plexus-lifex/baa/index.html ]; then
+            cp out/plexus-lifex/baa/index.txt out/plexus-lifex/baa/index.html
+          fi
 
       - name: Verify Build Output 🔍
         run: |
