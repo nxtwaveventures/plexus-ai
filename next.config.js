@@ -13,11 +13,18 @@ const nextConfig = {
     experimental: {
         typedRoutes: true
     },
-    // Add version query parameter to bust cache
+    // Optimize static assets
     webpack: (config, { dev, isServer }) => {
         if (!dev && !isServer) {
             config.output.filename = '[name].[contenthash].js';
             config.output.chunkFilename = '[name].[contenthash].js';
+            // Ensure CSS is properly extracted
+            config.optimization.splitChunks.cacheGroups.styles = {
+                name: 'styles',
+                test: /\.css$/,
+                chunks: 'all',
+                enforce: true,
+            };
         }
         return config;
     },
