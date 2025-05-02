@@ -12,8 +12,6 @@ const nextConfig = {
     basePath: '',
     experimental: {
         typedRoutes: true,
-        // Enable static page generation
-        staticPageGenerationTimeout: 120,
         // Enable CSS optimization
         optimizeCss: true,
         // Enable scroll restoration

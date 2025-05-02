@@ -174,6 +174,10 @@ const questions: AssessmentQuestion[] = [
     }
 ];
 
+// Add static export configuration
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export default function BAA() {
     const [isClient, setIsClient] = useState(false);
     const [answers, setAnswers] = useState<Record<number, string | number>>({});
