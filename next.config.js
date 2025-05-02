@@ -18,6 +18,14 @@ const nextConfig = {
             '/plexus-lifex/baa': { page: '/plexus-lifex/baa' },
             '/plexus-lifex/baa/': { page: '/plexus-lifex/baa' },
         };
+    },
+    rewrites: async () => {
+        return [
+            {
+                source: '/plexus-lifex/baa',
+                destination: '/plexus-lifex/baa/',
+            },
+        ];
     }
 };
 
