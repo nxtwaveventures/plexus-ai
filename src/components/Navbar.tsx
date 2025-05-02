@@ -31,9 +31,6 @@ const Navbar = () => {
                         <Link href="/#about" className="text-white/80 hover:text-white transition-colors">About CoE</Link>
                         <Link href="/research" className="text-white/80 hover:text-white transition-colors">Research</Link>
                         <Link href="/plexus-lifex" className="text-white/80 hover:text-white transition-colors">Plexus LifeX</Link>
-                        <Link href="/plexus-lifex/baa" className="text-white/80 hover:text-white transition-colors">
-                            <span className="text-primary hover:text-primary/90">Biological Age Assessment</span>
-                        </Link>
                         <Link href="/innovation" className="text-white/80 hover:text-white transition-colors">Innovation</Link>
                         <Link href="/#contact" className="glow-button ml-2">
                             Contact Us
@@ -64,9 +61,6 @@ const Navbar = () => {
                             <Link href="/#about" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>About CoE</Link>
                             <Link href="/research" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Research</Link>
                             <Link href="/plexus-lifex" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Plexus LifeX</Link>
-                            <Link href="/plexus-lifex/baa" className="text-xl text-primary hover:text-primary/90 transition-colors" onClick={toggleMenu}>
-                                Biological Age Assessment
-                            </Link>
                             <Link href="/innovation" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Innovation</Link>
                             <Link href="/#contact" className="glow-button mt-4" onClick={toggleMenu}>
                                 Contact Us

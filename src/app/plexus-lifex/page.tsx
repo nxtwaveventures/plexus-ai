@@ -37,43 +37,8 @@ export default function PlexusLifeX() {
                 </div>
             </section>
 
-            {/* BAA Section */}
-            <section className="py-20 relative bg-gradient-to-b from-background via-background/95 to-background">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="text-center mb-12 animate-fade-in">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                                Biological Age Assessment
-                            </h2>
-                            <p className="text-xl text-white/80 mb-8">
-                                Discover your biological age through our advanced AI-powered assessment
-                            </p>
-                        </div>
-
-                        <div className="card-glow p-8 rounded-lg text-center border-2 border-primary/30 hover:border-primary/50 transition-all duration-300 animate-fade-in-delayed">
-                            <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
-                                <Brain className="w-10 h-10 text-primary" />
-                            </div>
-                            <h3 className="text-2xl font-semibold mb-4">
-                                Take the Assessment
-                            </h3>
-                            <p className="text-white/70 mb-8">
-                                Our comprehensive assessment analyzes various factors including lifestyle, health metrics, and biological markers to determine your body's true age.
-                            </p>
-                            <Link
-                                href="/plexus-lifex/baa"
-                                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
-                            >
-                                Start Assessment
-                                <ArrowRight className="ml-2 w-5 h-5" />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Key Features */}
-            <section className="py-20 relative">
+            <section className="py-20 relative bg-gradient-to-b from-background via-background/95 to-background">
                 <div className="container mx-auto px-4">
                     <div className="max-w-5xl mx-auto">
                         <ScrollReveal>
