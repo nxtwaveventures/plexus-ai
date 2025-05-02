@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { HeartPulse, Wallet, Users, ArrowRight, Brain } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
@@ -13,20 +12,12 @@ export default function PlexusLifeX() {
                 <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background to-background/60 pointer-events-none"></div>
                 <div className="container mx-auto px-4 py-20 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
+                        <div className="animate-fade-in">
                             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
                                 Plexus LifeX
                             </h1>
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                        >
+                        </div>
+                        <div className="animate-fade-in-delayed">
                             <p className="text-xl text-white/90 mb-8">
                                 Transforming Healthcare Access Through AI-Powered Financial Solutions
                             </p>
@@ -38,16 +29,16 @@ export default function PlexusLifeX() {
                                 View Pitch Deck
                                 <ArrowRight className="ml-2 w-5 h-5" />
                             </Link>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* BAA Section - Now Featured Above Key Features */}
+            {/* BAA Section */}
             <section className="py-20 relative bg-gradient-to-b from-background via-background/95 to-background">
                 <div className="container mx-auto px-4">
                     <div className="max-w-5xl mx-auto">
-                        <div className="text-center mb-12">
+                        <div className="text-center mb-12 animate-fade-in">
                             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
                                 Biological Age Assessment
                             </h2>
@@ -56,7 +47,7 @@ export default function PlexusLifeX() {
                             </p>
                         </div>
 
-                        <div className="card-glow p-8 rounded-lg text-center border-2 border-primary/30 hover:border-primary/50 transition-all duration-300">
+                        <div className="card-glow p-8 rounded-lg text-center border-2 border-primary/30 hover:border-primary/50 transition-all duration-300 animate-fade-in-delayed">
                             <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
                                 <Brain className="w-10 h-10 text-primary" />
                             </div>
