@@ -34,10 +34,12 @@ jobs:
           echo "plexusai.in" > out/CNAME
           # Ensure all files have proper permissions
           chmod -R 755 out/
+          # Create a 404.html file that redirects to the main page
+          echo "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0;url=/'></head></html>" > out/404.html
           # Ensure BAA directory exists and has index.html
           mkdir -p out/plexus-lifex/baa
           if [ ! -f out/plexus-lifex/baa/index.html ]; then
-            echo "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0;url=/plexus-lifex/baa/'></head></html>" > out/plexus-lifex/baa/index.html
+            cp out/plexus-lifex/baa/index.txt out/plexus-lifex/baa/index.html
           fi
 
       - name: Verify Build Output 🔍
@@ -51,6 +53,7 @@ jobs:
           echo "\nChecking critical files:"
           echo "Root index.html:" $(test -f out/index.html && echo "✓ exists" || echo "✗ missing")
           echo "BAA index.html:" $(test -f out/plexus-lifex/baa/index.html && echo "✓ exists" || echo "✗ missing")
+          echo "404.html:" $(test -f out/404.html && echo "✓ exists" || echo "✗ missing")
           echo "\nCNAME contents:"
           cat out/CNAME
 

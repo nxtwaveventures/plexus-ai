@@ -10,6 +10,14 @@ const nextConfig = {
     assetPrefix: '',
     experimental: {
         typedRoutes: true
+    },
+    exportPathMap: async function () {
+        return {
+            '/': { page: '/' },
+            '/plexus-lifex': { page: '/plexus-lifex' },
+            '/plexus-lifex/baa': { page: '/plexus-lifex/baa' },
+            '/plexus-lifex/baa/': { page: '/plexus-lifex/baa' }
+        };
     }
 };
 
