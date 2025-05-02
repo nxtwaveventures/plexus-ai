@@ -26,6 +26,14 @@ const nextConfig = {
             };
         }
         return config;
+    },
+    // Configure static pages
+    exportPathMap: async function () {
+        return {
+            '/': { page: '/' },
+            '/plexus-lifex': { page: '/plexus-lifex' },
+            '/plexus-lifex/baa': { page: '/plexus-lifex/baa' }
+        };
     }
 };
 
