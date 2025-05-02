@@ -174,15 +174,6 @@ const questions: AssessmentQuestion[] = [
     }
 ];
 
-// Add static generation configuration
-export const dynamic = 'force-static';
-export const revalidate = false;
-
-// Generate static params for the BAA page
-export async function generateStaticParams() {
-    return [{}];
-}
-
 export default function BAA() {
     const [isClient, setIsClient] = useState(false);
     const [answers, setAnswers] = useState<Record<number, string | number>>({});
