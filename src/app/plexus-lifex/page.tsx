@@ -4,6 +4,15 @@ import { HeartPulse, Wallet, Users, ArrowRight, Brain } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 
+// Add static generation configuration
+export const dynamic = 'force-static';
+export const revalidate = false;
+
+// Generate static params for the Plexus LifeX page
+export async function generateStaticParams() {
+    return [{}];
+}
+
 export default function PlexusLifeX() {
     return (
         <main className="min-h-screen bg-background">
