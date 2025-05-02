@@ -26,29 +26,28 @@ jobs:
           npm ci
           # Fix globals.css by removing problematic text
           sed -i 's/} they.*foreign/}/' src/app/globals.css
+          # Build the project
           npm run build
+          # Create necessary files for GitHub Pages
           touch out/.nojekyll
           echo "plexusai.in" > out/CNAME
+          # Create a copy of plexus-lifex/index.html as index.html in root
+          cp out/plexus-lifex/index.html out/index.html
+          # Ensure all files have proper permissions
+          chmod -R 755 out/
 
-      - name: Prepare for deployment
+      - name: Verify Build Output
         run: |
-          # Ensure .nojekyll file exists
-          touch out/.nojekyll
-          # Create CNAME file
-          echo "plexusai.in" > out/CNAME
-          # List output directories
           echo "Output directory structure:"
           ls -la out/
           echo "LifeX directory:"
           ls -la out/plexus-lifex/ || echo "plexus-lifex directory missing"
           echo "BAA directory:"
           ls -la out/plexus-lifex/baa/ || echo "BAA directory missing"
-          # Ensure all files have proper permissions
-          chmod -R 755 out/
-          # Create index.html in root if it doesn't exist
-          if [ ! -f out/index.html ]; then
-            cp out/plexus-lifex/index.html out/index.html
-          fi
+          echo "Root index.html exists:"
+          test -f out/index.html && echo "Yes" || echo "No"
+          echo "CNAME file contents:"
+          cat out/CNAME
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
