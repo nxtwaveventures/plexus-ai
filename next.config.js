@@ -12,7 +12,15 @@ const nextConfig = {
     basePath: '',
     experimental: {
         typedRoutes: true
-    }
+    },
+    // Add version query parameter to bust cache
+    webpack: (config, { dev, isServer }) => {
+        if (!dev && !isServer) {
+            config.output.filename = '[name].[contenthash].js';
+            config.output.chunkFilename = '[name].[contenthash].js';
+        }
+        return config;
+    },
 };
 
 module.exports = nextConfig; 
