@@ -47,18 +47,26 @@ export default function PlexusLifeX() {
             <section className="py-20 relative bg-gradient-to-b from-background via-background/95 to-background">
                 <div className="container mx-auto px-4">
                     <div className="max-w-5xl mx-auto">
-                        <ScrollReveal>
-                            <div className="text-center mb-12">
-                                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                                    Biological Age Assessment
-                                </h2>
-                                <p className="text-xl text-white/80 mb-8">
-                                    Discover your biological age through our advanced AI-powered assessment
-                                </p>
-                            </div>
-                        </ScrollReveal>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="text-center mb-12"
+                        >
+                            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+                                Biological Age Assessment
+                            </h2>
+                            <p className="text-xl text-white/80 mb-8">
+                                Discover your biological age through our advanced AI-powered assessment
+                            </p>
+                        </motion.div>
 
-                        <div className="card-glow p-8 rounded-lg text-center border-2 border-primary/30 hover:border-primary/50 transition-all duration-300">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="card-glow p-8 rounded-lg text-center border-2 border-primary/30 hover:border-primary/50 transition-all duration-300"
+                        >
                             <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
                                 <Brain className="w-10 h-10 text-primary" />
                             </div>
@@ -75,7 +83,7 @@ export default function PlexusLifeX() {
                                 Start Assessment
                                 <ArrowRight className="ml-2 w-5 h-5" />
                             </Link>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
