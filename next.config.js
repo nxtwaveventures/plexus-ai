@@ -16,7 +16,7 @@ const nextConfig = {
             '/': { page: '/' },
             '/plexus-lifex': { page: '/plexus-lifex' },
             '/plexus-lifex/baa': { page: '/plexus-lifex/baa' },
-            '/plexus-lifex/baa/': { page: '/plexus-lifex/baa' }
+            '/plexus-lifex/baa/': { page: '/plexus-lifex/baa' },
         };
     }
 };
