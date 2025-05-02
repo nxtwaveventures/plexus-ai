@@ -175,6 +175,7 @@ const questions: AssessmentQuestion[] = [
 ];
 
 export default function BAA() {
+    const [isClient, setIsClient] = useState(false);
     const [answers, setAnswers] = useState<Record<number, string | number>>({});
     const [showResults, setShowResults] = useState(false);
     const [biologicalAge, setBiologicalAge] = useState<number | null>(null);
@@ -187,9 +188,15 @@ export default function BAA() {
     const [showHistory, setShowHistory] = useState(false);
 
     useEffect(() => {
+        setIsClient(true);
         const savedHistory = localStorage.getItem('baa_history');
         if (savedHistory) {
-            setAssessmentHistory(JSON.parse(savedHistory));
+            try {
+                setAssessmentHistory(JSON.parse(savedHistory));
+            } catch (error) {
+                console.error('Error parsing assessment history:', error);
+                setAssessmentHistory([]);
+            }
         }
     }, []);
 
@@ -596,6 +603,17 @@ export default function BAA() {
             </div>
         </motion.div>
     );
+
+    if (!isClient) {
+        return (
+            <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+                    <p className="mt-4 text-gray-600">Loading assessment...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <main className="min-h-screen bg-background py-12">

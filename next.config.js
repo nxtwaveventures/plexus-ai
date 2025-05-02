@@ -11,7 +11,13 @@ const nextConfig = {
     // Configure base path
     basePath: '',
     experimental: {
-        typedRoutes: true
+        typedRoutes: true,
+        // Enable static page generation
+        staticPageGenerationTimeout: 120,
+        // Enable CSS optimization
+        optimizeCss: true,
+        // Enable scroll restoration
+        scrollRestoration: true
     },
     // Optimize static assets
     webpack: (config, { dev, isServer }) => {
@@ -25,8 +31,36 @@ const nextConfig = {
                 chunks: 'all',
                 enforce: true,
             };
+            // Optimize static assets
+            config.optimization.moduleIds = 'deterministic';
+            config.optimization.runtimeChunk = 'single';
+            config.optimization.splitChunks = {
+                chunks: 'all',
+                maxInitialRequests: Infinity,
+                minSize: 0,
+                cacheGroups: {
+                    vendor: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name(module) {
+                            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                            return `npm.${packageName.replace('@', '')}`;
+                        },
+                    },
+                },
+            };
         }
         return config;
+    },
+    // Configure static generation
+    generateStaticParams: async () => {
+        return {
+            '/plexus-lifex': {},
+            '/plexus-lifex/baa': {},
+        };
+    },
+    // Ensure proper static file generation
+    generateBuildId: async () => {
+        return `build-${Date.now()}`;
     }
 };
 
