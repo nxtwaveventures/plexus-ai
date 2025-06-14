@@ -6,12 +6,12 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-    title: "Plexus AI - Center of Excellence | Because Every Life Deserves More",
-    description: "Plexus AI is transforming healthcare by making it smarter, more personalized, and empowering clinicians through innovative AI solutions.",
-    keywords: "Plexus AI, healthcare AI, medical technology, personalized care, LifeX, health innovation",
+    title: "Plexus AI – India's Healthcare Innovation Hub | MedTech, AI, FinTech Accelerator",
+    description: "Join Plexus AI, India's premier center for MedTech, AI, and FinTech innovation. Accelerate your healthcare startup with clinical validation, funding, and real-world impact.",
+    keywords: "healthcare innovation, MedTech, AI in healthcare, health startups, clinical validation, health accelerator, health insurance innovation, digital health, India healthcare, health technology, FinTech, healthcare AI, medical technology, personalized care, LifeX, health innovation",
     openGraph: {
-        title: "Plexus AI - Center of Excellence",
-        description: "Reimagining Healthcare through Innovation - Because Every Life Deserves More",
+        title: "Plexus AI – India's Healthcare Innovation Hub",
+        description: "India's premier center for MedTech, AI, and FinTech innovation. Accelerate your healthcare startup with clinical validation, funding, and real-world impact.",
         url: "https://plexusai.in",
         siteName: "Plexus AI",
         images: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
                 url: "/og-image.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Plexus AI",
+                alt: "Plexus AI - Healthcare Innovation Hub",
             }
         ],
         locale: "en_US",

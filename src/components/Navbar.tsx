@@ -4,75 +4,106 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Route } from 'next';
+
+type NavLink = {
+    href: Route;
+    label: string;
+};
 
 const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
+            setIsScrolled(window.scrollY > 20);
         };
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const navLinks: NavLink[] = [
+        { href: '/' as Route, label: 'Home' },
+        { href: '/programs' as Route, label: 'Programs' },
+        { href: '/use-cases' as Route, label: 'Use Cases' },
+        { href: '/plexusverse' as Route, label: 'PlexusVerse' },
+    ];
 
     return (
-        <>
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-2 bg-background/80 backdrop-blur-lg shadow-lg' : 'py-4 bg-transparent'}`}>
-                <div className="container mx-auto px-4 flex justify-between items-center">
-                    <Link href="/" className="flex items-center space-x-2">
-                        <span className="text-xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Plexus AI</span>
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-lg' : 'bg-transparent'}`}>
+            <div className="container mx-auto px-4">
+                <div className="flex items-center justify-between h-20">
+                    {/* Logo */}
+                    <Link href="/" className="text-2xl font-bold text-white">
+                        Plexus AI
                     </Link>
 
+                    {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8">
-                        <Link href="/#about" className="text-white/80 hover:text-white transition-colors">About CoE</Link>
-                        <Link href="/research" className="text-white/80 hover:text-white transition-colors">Research</Link>
-                        <Link href="/plexus-lifex" className="text-white/80 hover:text-white transition-colors">Plexus LifeX</Link>
-                        <Link href="/innovation" className="text-white/80 hover:text-white transition-colors">Innovation</Link>
-                        <Link href="/#contact" className="glow-button ml-2">
-                            Contact Us
-                        </Link>
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="text-white/70 hover:text-white transition-colors"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                     </div>
 
-                    <button className="md:hidden text-white" onClick={toggleMenu}>
-                        <Menu className="w-6 h-6" />
+                    {/* Desktop CTA Buttons */}
+                    <div className="hidden md:flex items-center space-x-4">
+                        <Button variant="outline" asChild>
+                            <Link href="/apply-startup">Apply as Startup</Link>
+                        </Button>
+                        <Button variant="glow" asChild>
+                            <Link href="/partner">Partner with Us</Link>
+                        </Button>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden text-white"
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
+                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </button>
                 </div>
-            </nav>
 
-            <AnimatePresence>
-                {isMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, x: '100%' }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: '100%' }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-50 bg-background/95 backdrop-blur-lg md:hidden"
-                    >
-                        <div className="flex justify-end p-4">
-                            <button className="text-white" onClick={toggleMenu}>
-                                <X className="w-6 h-6" />
-                            </button>
-                        </div>
-                        <div className="flex flex-col items-center justify-center h-full space-y-8 -mt-16">
-                            <Link href="/#about" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>About CoE</Link>
-                            <Link href="/research" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Research</Link>
-                            <Link href="/plexus-lifex" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Plexus LifeX</Link>
-                            <Link href="/innovation" className="text-xl text-white/80 hover:text-white transition-colors" onClick={toggleMenu}>Innovation</Link>
-                            <Link href="/#contact" className="glow-button mt-4" onClick={toggleMenu}>
-                                Contact Us
-                            </Link>
-                            <div className="text-center mt-8 text-white/60 text-sm">
-                                <p>Center of Excellence in AI</p>
+                {/* Mobile Navigation */}
+                {isOpen && (
+                    <div className="md:hidden py-4">
+                        <div className="flex flex-col space-y-4">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className="text-white/70 hover:text-white transition-colors px-4 py-2"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                            <div className="px-4 py-2 space-y-2">
+                                <Button variant="outline" className="w-full" asChild>
+                                    <Link href="/apply-startup" onClick={() => setIsOpen(false)}>
+                                        Apply as Startup
+                                    </Link>
+                                </Button>
+                                <Button variant="glow" className="w-full" asChild>
+                                    <Link href="/partner" onClick={() => setIsOpen(false)}>
+                                        Partner with Us
+                                    </Link>
+                                </Button>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 )}
-            </AnimatePresence>
-        </>
+            </div>
+        </nav>
     );
 };
 
