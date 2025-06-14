@@ -58,67 +58,44 @@ export default function Home() {
         <main className="min-h-screen" ref={topRef}>
             {/* Hero Section */}
             <section className="min-h-screen relative flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background to-background pointer-events-none"></div>
-                <div className="container mx-auto px-4 pt-20 relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
-                                Plexus AI
+                {/* Background Pattern */}
+                <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-10"></div>
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background to-background"></div>
+
+                {/* Hero Content */}
+                <div className="container mx-auto px-4 py-16 md:py-24">
+                    <div className="text-center max-w-4xl mx-auto">
+                        <ScrollReveal>
+                            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                                Plexus AI: India's Healthcare Innovation Hub
                             </h1>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                            <p className="text-xl md:text-2xl text-white/90 mb-8">
-                                Make something that saves lives.
+                        </ScrollReveal>
+                        <ScrollReveal>
+                            <p className="text-xl md:text-2xl text-gray-300 mb-8">
+                                Accelerating MedTech, AI, and FinTech Innovation in Healthcare
                             </p>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
-                            className="mb-16"
-                        >
-                            <Button variant="glow" size="lg" className="group" asChild>
+                        </ScrollReveal>
+                        <ScrollReveal>
+                            <div className="flex flex-wrap justify-center gap-4">
                                 <Link href="/apply-startup">
-                                    Apply to Plexus AI
-                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    <Button size="lg" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600">
+                                        Apply as Startup
+                                    </Button>
                                 </Link>
-                            </Button>
-                        </motion.div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <ScrollReveal>
-                                <div className="card-glow p-8 text-center">
-                                    <h3 className="text-4xl font-bold mb-2 text-primary">3+</h3>
-                                    <p className="text-white/70">Healthcare Startups</p>
-                                </div>
-                            </ScrollReveal>
-
-                            <ScrollReveal delay={0.2}>
-                                <div className="card-glow p-8 text-center">
-                                    <h3 className="text-4xl font-bold mb-2 text-primary">₹1Cr+</h3>
-                                    <p className="text-white/70">Combined Valuation</p>
-                                </div>
-                            </ScrollReveal>
-
-                            <ScrollReveal delay={0.3}>
-                                <div className="card-glow p-8 text-center">
-                                    <h3 className="text-4xl font-bold mb-2 text-primary">100+</h3>
-                                    <p className="text-white/70">Healthcare Network</p>
-                                </div>
-                            </ScrollReveal>
-                        </div>
+                                <Link href="/partner">
+                                    <Button size="lg" variant="outline" className="border-2 hover:bg-white/10">
+                                        Partner with Us
+                                    </Button>
+                                </Link>
+                            </div>
+                        </ScrollReveal>
                     </div>
                 </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -bottom-48 left-0 right-0 h-64 bg-gradient-to-b from-primary/5 to-transparent blur-3xl"></div>
             </section>
 
             {/* Top Companies Section */}
@@ -155,30 +132,74 @@ export default function Home() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <ScrollReveal delay={0.1}>
-                                <div className="card-glow p-6">
-                                    <h3 className="text-xl font-semibold mb-4">We help founders at their earliest stages</h3>
-                                    <p className="text-white/70">Supporting healthcare innovators from concept to clinical validation.</p>
+                                <div className="card-glow p-6 relative overflow-hidden group">
+                                    <div className="relative z-10">
+                                        <div className="w-12 h-12 mb-4">
+                                            <Image
+                                                src="/images/icons/early-stage.svg"
+                                                alt="Early Stage"
+                                                width={48}
+                                                height={48}
+                                            />
+                                        </div>
+                                        <h3 className="text-xl font-semibold mb-4">We help founders at their earliest stages</h3>
+                                        <p className="text-white/70">Supporting healthcare innovators from concept to clinical validation.</p>
+                                    </div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                             </ScrollReveal>
 
                             <ScrollReveal delay={0.2}>
-                                <div className="card-glow p-6">
-                                    <h3 className="text-xl font-semibold mb-4">We improve success rates</h3>
-                                    <p className="text-white/70">Through mentorship, clinical validation, and market access support.</p>
+                                <div className="card-glow p-6 relative overflow-hidden group">
+                                    <div className="relative z-10">
+                                        <div className="w-12 h-12 mb-4">
+                                            <Image
+                                                src="/images/icons/success-rate.svg"
+                                                alt="Success Rate"
+                                                width={48}
+                                                height={48}
+                                            />
+                                        </div>
+                                        <h3 className="text-xl font-semibold mb-4">We improve success rates</h3>
+                                        <p className="text-white/70">Through mentorship, clinical validation, and market access support.</p>
+                                    </div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                             </ScrollReveal>
 
                             <ScrollReveal delay={0.3}>
-                                <div className="card-glow p-6">
-                                    <h3 className="text-xl font-semibold mb-4">We provide fundraising advantage</h3>
-                                    <p className="text-white/70">Access to healthcare-focused investors and funding opportunities.</p>
+                                <div className="card-glow p-6 relative overflow-hidden group">
+                                    <div className="relative z-10">
+                                        <div className="w-12 h-12 mb-4">
+                                            <Image
+                                                src="/images/icons/funding.svg"
+                                                alt="Funding"
+                                                width={48}
+                                                height={48}
+                                            />
+                                        </div>
+                                        <h3 className="text-xl font-semibold mb-4">We provide fundraising advantage</h3>
+                                        <p className="text-white/70">Access to healthcare-focused investors and funding opportunities.</p>
+                                    </div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                             </ScrollReveal>
 
                             <ScrollReveal delay={0.4}>
-                                <div className="card-glow p-6">
-                                    <h3 className="text-xl font-semibold mb-4">Track record of success</h3>
-                                    <p className="text-white/70">Our startups are transforming healthcare delivery across India.</p>
+                                <div className="card-glow p-6 relative overflow-hidden group">
+                                    <div className="relative z-10">
+                                        <div className="w-12 h-12 mb-4">
+                                            <Image
+                                                src="/images/icons/track-record.svg"
+                                                alt="Track Record"
+                                                width={48}
+                                                height={48}
+                                            />
+                                        </div>
+                                        <h3 className="text-xl font-semibold mb-4">Track record of success</h3>
+                                        <p className="text-white/70">Our startups are transforming healthcare delivery across India.</p>
+                                    </div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                             </ScrollReveal>
                         </div>
@@ -237,7 +258,14 @@ export default function Home() {
                                 <div className="card-glow p-6">
                                     <p className="text-lg mb-6 text-white/90">"Plexus AI's clinical validation support was crucial for our product development. Their network opened doors we couldn't have accessed otherwise."</p>
                                     <div className="flex items-center">
-                                        <div className="w-12 h-12 rounded-full bg-white/10"></div>
+                                        <div className="relative w-12 h-12">
+                                            <Image
+                                                src="/images/testimonials/founder1.svg"
+                                                alt="Dr. Sharma"
+                                                fill
+                                                className="rounded-full object-cover"
+                                            />
+                                        </div>
                                         <div className="ml-4">
                                             <p className="font-semibold">Dr. Sharma</p>
                                             <p className="text-sm text-white/70">Founder, HealthTech Startup</p>
@@ -250,7 +278,14 @@ export default function Home() {
                                 <div className="card-glow p-6">
                                     <p className="text-lg mb-6 text-white/90">"The mentorship and healthcare expertise at Plexus AI helped us refine our solution and find product-market fit faster than we could have on our own."</p>
                                     <div className="flex items-center">
-                                        <div className="w-12 h-12 rounded-full bg-white/10"></div>
+                                        <div className="relative w-12 h-12">
+                                            <Image
+                                                src="/images/testimonials/founder2.svg"
+                                                alt="Priya Patel"
+                                                fill
+                                                className="rounded-full object-cover"
+                                            />
+                                        </div>
                                         <div className="ml-4">
                                             <p className="font-semibold">Priya Patel</p>
                                             <p className="text-sm text-white/70">CEO, MedTech Innovation</p>
@@ -265,6 +300,7 @@ export default function Home() {
 
             {/* Final CTA */}
             <section className="py-20 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('/images/cta-bg.svg')] opacity-5"></div>
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center">
                         <ScrollReveal>
