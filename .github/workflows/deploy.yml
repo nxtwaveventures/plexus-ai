@@ -1,28 +1,19 @@
-name: Deploy to GitHub Pages
+name: Deploy to Production
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
@@ -33,51 +24,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Create .nojekyll file
-        run: touch out/.nojekyll
-
-      - name: Create CNAME file
-        run: echo "plexusai.in" > out/CNAME
-
-      - name: Ensure proper permissions
-        run: chmod -R 755 out/
-
-      - name: Create 404.html
+      - name: Deploy to production
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
-          cat > out/404.html << 'EOL'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="utf-8">
-            <title>Page Not Found</title>
-            <script>
-              window.location.href = '/';
-            </script>
-          </head>
-          <body>
-            <p>Redirecting to home page...</p>
-          </body>
-          </html>
-          EOL
-
-      - name: Verify build output
-        run: ls -la out/
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 
+          echo "$DEPLOY_KEY" > deploy_key
+          chmod 600 deploy_key
+          mkdir -p ~/.ssh
+          ssh-keyscan -H plexusai.in >> ~/.ssh/known_hosts
+          rsync -avz -e "ssh -i deploy_key" out/ ubuntu@plexusai.in:/var/www/plexusai.in/
+          rm deploy_key 

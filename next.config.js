@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
+    basePath: '',
     images: {
-        unoptimized: true
+        unoptimized: true,
     },
     trailingSlash: true,
     distDir: '.next',
     experimental: {
         typedRoutes: true
     },
-    basePath: '',
     assetPrefix: '',
 }
 
