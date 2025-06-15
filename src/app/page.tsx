@@ -15,21 +15,47 @@ export default function Home() {
     const advantageRef = useRef<HTMLDivElement>(null);
     const contactRef = useRef<HTMLDivElement>(null);
     const topRef = useRef<HTMLDivElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
+    const [videoPlayed, setVideoPlayed] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 500);
         };
 
+        // Auto-play video with sound on first user interaction
+        const handleFirstInteraction = () => {
+            if (!videoPlayed && videoRef.current) {
+                videoRef.current.muted = false;
+                videoRef.current.play().catch(console.error);
+                setVideoPlayed(true);
+                // Remove listeners after first interaction
+                document.removeEventListener('click', handleFirstInteraction);
+                document.removeEventListener('scroll', handleFirstInteraction);
+                document.removeEventListener('keydown', handleFirstInteraction);
+            }
+        };
+
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+
+        // Add listeners for first user interaction
+        document.addEventListener('click', handleFirstInteraction);
+        document.addEventListener('scroll', handleFirstInteraction);
+        document.addEventListener('keydown', handleFirstInteraction);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('click', handleFirstInteraction);
+            document.removeEventListener('scroll', handleFirstInteraction);
+            document.removeEventListener('keydown', handleFirstInteraction);
+        };
+    }, [videoPlayed]);
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -113,10 +139,21 @@ export default function Home() {
                                     playsInline
                                     controls
                                     preload="metadata"
+                                    ref={videoRef}
                                 >
                                     <source src="/plexusai.mp4" type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
+
+                                {/* Audio indicator */}
+                                {!videoPlayed && (
+                                    <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-full px-3 py-2 flex items-center space-x-2 text-white text-sm">
+                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.846 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.846l3.537-3.816a1 1 0 011.617.816zM16 8a2 2 0 11-4 0 2 2 0 014 0z" clipRule="evenodd" />
+                                        </svg>
+                                        <span>🔊 Audio</span>
+                                    </div>
+                                )}
                             </div>
                         </ScrollReveal>
                     </div>
