@@ -1,4 +1,6 @@
-# Plexus LifeX Pitch Deck
+# Plexus AI
+
+<!-- Trigger redeploy: update -->
 
 A beautiful, responsive React-based presentation website for Plexus LifeX, built with Next.js 14, Tailwind CSS, and Framer Motion.
 
