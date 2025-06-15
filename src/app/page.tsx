@@ -57,45 +57,110 @@ export default function Home() {
     return (
         <main className="min-h-screen" ref={topRef}>
             {/* Hero Section */}
-            <section className="min-h-screen relative flex items-center justify-center overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-10"></div>
-
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background to-background"></div>
-
+            <section className="relative min-h-screen bg-gradient-to-b from-black to-gray-900 overflow-hidden">
                 {/* Hero Content */}
-                <div className="container mx-auto px-4 py-16 md:py-24">
-                    <div className="text-center max-w-4xl mx-auto">
+                <div className="container mx-auto px-4 relative z-10 min-h-screen flex items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+                        {/* Content Section - Left Side */}
+                        <div className="text-left max-w-2xl">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="mb-4"
+                            >
+                                <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight">
+                                    Saving Lives Through Innovation
+                                </h1>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                                className="mb-8"
+                            >
+                                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                                    Accelerating MedTech, AI, and FinTech Innovation in Healthcare
+                                </p>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                            >
+                                <Button
+                                    variant="glow"
+                                    size="lg"
+                                    className="group text-lg px-8 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 shadow-xl hover:shadow-2xl transition-all duration-300"
+                                    asChild
+                                >
+                                    <Link href="/apply-startup" className="flex items-center">
+                                        Apply to Plexus AI
+                                        <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                                    </Link>
+                                </Button>
+                            </motion.div>
+                        </div>
+
+                        {/* Video Section - Right Side */}
                         <ScrollReveal>
-                            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                                Plexus AI: India's Healthcare Innovation Hub
-                            </h1>
-                        </ScrollReveal>
-                        <ScrollReveal>
-                            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-                                Accelerating MedTech, AI, and FinTech Innovation in Healthcare
-                            </p>
-                        </ScrollReveal>
-                        <ScrollReveal>
-                            <div className="flex flex-wrap justify-center gap-4">
-                                <Link href="/apply-startup">
-                                    <Button size="lg" className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600">
-                                        Apply as Startup
-                                    </Button>
-                                </Link>
-                                <Link href="/partner">
-                                    <Button size="lg" variant="outline" className="border-2 hover:bg-white/10">
-                                        Partner with Us
-                                    </Button>
-                                </Link>
+                            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/20 backdrop-blur-sm hover:shadow-purple-500/20 transition-all duration-300">
+                                <video
+                                    className="w-full h-full object-cover"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                >
+                                    <source src="/plexusai.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                         </ScrollReveal>
                     </div>
                 </div>
+            </section>
 
-                {/* Decorative Elements */}
-                <div className="absolute -bottom-48 left-0 right-0 h-64 bg-gradient-to-b from-primary/5 to-transparent blur-3xl"></div>
+            {/* Stats Section */}
+            <section className="py-16 bg-black/30 backdrop-blur-sm">
+                <div className="container mx-auto px-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                        <ScrollReveal>
+                            <div className="card-glow p-8 text-center rounded-xl">
+                                <h3 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                                    3+
+                                </h3>
+                                <p className="text-white/80 text-lg md:text-xl font-medium">
+                                    Healthcare Startups
+                                </p>
+                            </div>
+                        </ScrollReveal>
+
+                        <ScrollReveal delay={0.2}>
+                            <div className="card-glow p-8 text-center rounded-xl">
+                                <h3 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                                    ₹1Cr+
+                                </h3>
+                                <p className="text-white/80 text-lg md:text-xl font-medium">
+                                    Combined Valuation
+                                </p>
+                            </div>
+                        </ScrollReveal>
+
+                        <ScrollReveal delay={0.3}>
+                            <div className="card-glow p-8 text-center rounded-xl">
+                                <h3 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent">
+                                    100+
+                                </h3>
+                                <p className="text-white/80 text-lg md:text-xl font-medium">
+                                    Healthcare Network
+                                </p>
+                            </div>
+                        </ScrollReveal>
+                    </div>
+                </div>
             </section>
 
             {/* Top Companies Section */}
