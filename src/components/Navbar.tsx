@@ -29,6 +29,7 @@ const Navbar = () => {
         { href: '/' as Route, label: 'Home' },
         { href: '/programs' as Route, label: 'Programs' },
         { href: '/use-cases' as Route, label: 'Use Cases' },
+        { href: '/blogs' as Route, label: 'Blogs' },
         { href: '/plexusverse' as Route, label: 'PlexusVerse' },
     ];
 
