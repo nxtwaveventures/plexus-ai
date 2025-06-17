@@ -431,7 +431,7 @@ export default function Home() {
                             <div className="flex space-x-4 mb-4">
                                 {/* Instagram */}
                                 <a
-                                    href="https://instagram.com/plexusai"
+                                    href="https://instagram.com/aiplexus"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-white/70 hover:text-pink-400 transition-colors duration-300"
