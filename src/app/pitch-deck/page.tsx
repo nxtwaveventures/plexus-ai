@@ -15,7 +15,7 @@ interface Slide {
 }
 
 export default function PitchDeck() {
-    const [companyName, setCompanyName] = useState('Plexus LifeX');
+    const [companyName, setCompanyName] = useState('Plexus AI');
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPresenting, setIsPresenting] = useState(false);
     const [slides, setSlides] = useState<Slide[]>([
@@ -33,7 +33,7 @@ export default function PitchDeck() {
         },
         {
             title: 'Our Solution',
-            content: 'Plexus LifeX combines AI-powered health analytics with personalized financial planning',
+            content: 'Plexus AI combines healthcare innovation with AI-powered solutions to accelerate MedTech development',
             image: '/slide3.jpg',
             notes: 'Highlight: Technology, unique features, competitive advantage'
         },
@@ -129,15 +129,15 @@ export default function PitchDeck() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-20">
             <Head>
-                <title>AI-Powered Pitch Deck Generator | Plexus LifeX</title>
-                <meta name="description" content="Generate a professional pitch deck for Plexus LifeX" />
+                <title>AI-Powered Pitch Deck Generator | Plexus AI</title>
+                <meta name="description" content="Generate a professional pitch deck for Plexus AI" />
             </Head>
 
             {!isPresenting ? (
                 <main className="container mx-auto px-4 py-8">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                         <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                            Plexus LifeX Pitch Deck
+                            Plexus AI Pitch Deck
                         </h1>
                         <div className="flex flex-wrap gap-4">
                             <button

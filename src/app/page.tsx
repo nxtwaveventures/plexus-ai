@@ -473,9 +473,9 @@ export default function Home() {
                         <div>
                             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
                             <ul className="space-y-2">
-                                <li><Link href="/#about" className="text-white/70 hover:text-white transition-colors">About</Link></li>
-                                <li><Link href="/plexus-lifex" className="text-white/70 hover:text-white transition-colors">Plexus LifeX</Link></li>
-                                <li><Link href="/#contact" className="text-white/70 hover:text-white transition-colors">Contact</Link></li>
+                                <li><Link href="/programs" className="text-white/70 hover:text-white transition-colors">Programs</Link></li>
+                                <li><Link href="/use-cases" className="text-white/70 hover:text-white transition-colors">Use Cases</Link></li>
+                                <li><Link href="/plexusverse" className="text-white/70 hover:text-white transition-colors">PlexusVerse</Link></li>
                             </ul>
                         </div>
 
@@ -483,8 +483,9 @@ export default function Home() {
                             <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
                             <div className="text-white/70 space-y-2">
                                 <p>📧 info@plexusai.in</p>
-                                <p>📱 +91 12345 67890</p>
-                                <p>📍 Mumbai, India</p>
+                                <p>📱 +91-7575-00-5555</p>
+                                <p>📱 +91-7572-99-9909</p>
+                                <p>📍 Sheetal Park, Shyam Nagar, Puneet Nagar, Bajrang Wadi, Rajkot, Gujarat 360006</p>
                             </div>
                         </div>
                     </div>

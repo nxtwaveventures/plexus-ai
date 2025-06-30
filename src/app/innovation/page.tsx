@@ -45,20 +45,6 @@ export default function Innovation() {
                         </ScrollReveal>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <ScrollReveal delay={0.1}>
-                                <div className="card-glow p-6">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                                            <Rocket className="w-6 h-6 text-primary" />
-                                        </div>
-                                        <h3 className="text-xl font-semibold">Plexus LifeX</h3>
-                                    </div>
-                                    <p className="text-white/70">
-                                        Revolutionizing healthcare access through AI-powered financial solutions and personalized wellness programs.
-                                    </p>
-                                </div>
-                            </ScrollReveal>
-
                             <ScrollReveal delay={0.2}>
                                 <div className="card-glow p-6">
                                     <div className="flex items-center gap-4 mb-4">
@@ -88,15 +74,15 @@ export default function Innovation() {
                             </ScrollReveal>
 
                             <ScrollReveal delay={0.4}>
-                                <div className="card-glow p-6">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                                            <Code2 className="w-6 h-6 text-primary" />
-                                        </div>
-                                        <h3 className="text-xl font-semibold">AI Development Platform</h3>
+                                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
+                                    <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mb-6">
+                                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
                                     </div>
-                                    <p className="text-white/70">
-                                        Comprehensive platform for developing and deploying healthcare AI solutions.
+                                    <h3 className="text-xl font-semibold">Clinical Validation Platform</h3>
+                                    <p className="text-gray-300 mt-4">
+                                        Accelerate your healthcare innovation with our comprehensive clinical validation platform and regulatory support.
                                     </p>
                                 </div>
                             </ScrollReveal>

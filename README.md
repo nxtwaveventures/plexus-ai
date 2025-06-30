@@ -1,8 +1,9 @@
-# Plexus AI
+# Plexus AI Website
 
 <!-- Trigger redeploy: update -->
 
-A beautiful, responsive React-based presentation website for Plexus LifeX, built with Next.js 14, Tailwind CSS, and Framer Motion.
+## Overview
+A beautiful, responsive React-based presentation website for Plexus AI, built with Next.js 14, Tailwind CSS, and Framer Motion.
 
 ## Features
 
